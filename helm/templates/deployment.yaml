@@ -42,8 +42,6 @@ spec:
           {{- end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
-          - configMapRef:
-              name: buildingconfig
           - secretRef:
               name: {{ include "new-install-notifier.fullname" . }}
           ports:
