@@ -1,0 +1,37 @@
+{
+	"5107":
+	        {
+			"channel_id": "C09D83P1E1G",
+			"description": "Daniel's Test"
+		},
+	"3461":
+		{
+			"channel_id": "C06CPH118V7",
+			"description": "PH Fiber"
+		},
+	"333":
+	        {
+			"channel_id": "G0FS2EVSQ",
+			"description": "50th Street"
+        	},
+	"1932":
+		{
+			"channel_id": "C02LZR9KKUP",
+			"description": "GSG Fiber"
+		},
+        "1933":
+                {
+                        "channel_id": "C02LZR9KKUP",
+			"description": "GSG Fiber"
+                },
+        "1934":
+                {
+                        "channel_id": "C02LZR9KKUP",
+			"description": "GSG Fiber"
+                },
+        "1936":
+                {
+                        "channel_id": "C02LZR9KKUP",
+			"description": "GSG Fiber (165 Broome)"
+                }
+}
