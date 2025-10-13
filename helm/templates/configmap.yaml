@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: newinstallnotifierconfig
-data:
-  FQDN: {{ .Values.new-install-notifier.fqdn }}
