@@ -67,7 +67,6 @@ def webhook():
             print("MeshDB Error (getting member):", response.status_code, response.text)
             return jsonify({"status": "error", "message": str(response.text)}), response.status_code
 
-		
         buildings_url = f"https://db.nycmesh.net/api/v1/buildings/{building_id}/"
         buildings_response = requests.get(buildings_url, headers=headers)
 
@@ -82,35 +81,32 @@ def webhook():
             print("MeshDB Error (getting buildings):", buildings_response.status_code, buildings_response.text)
             return jsonify({"status": "error", "message": str(buildings_response.text)}), buildings_response.status_code
 
-		###########################
-		
-		installs_url = f"https://db.nycmesh.net/api/v1/installs/{id}/"
-		installs_response = requests.get(installs_url, headers=headers)
-		
-		if installs_response.status_code == 200:
-		    new_install = installs_response.json()
-		
-		    # Retry up to 3 additional times if ticket_number is None
-		    ticket_number = new_install.get("ticket_number")
-		    retries = 0
-		    while ticket_number is None and retries < 3:
-		        print(f"No ticket yet, retrying ({retries + 1}/3)...")
-		        time.sleep(3)
-		        installs_response = requests.get(installs_url, headers=headers)
-		        if installs_response.status_code != 200:
-		            print("MeshDB Error (retrying install):", installs_response.status_code, installs_response.text)
-		            return jsonify({"status": "error", "message": str(installs_response.text)}), installs_response.status_code
-		        new_install = installs_response.json()
-		        ticket_number = new_install.get("ticket_number")
-		        retries += 1
-		
-		    if ticket_number is None:
-		        print("No ticket after retries!")
-		        return jsonify({"status": "no ticket"}), 500
-		
-		else:
-		    print("MeshDB Error (getting install):", installs_response.status_code, installs_response.text)
-		    return jsonify({"status": "error", "message": str(installs_response.text)}), installs_response.status_code
+        installs_url = f"https://db.nycmesh.net/api/v1/installs/{id}/"
+        installs_response = requests.get(installs_url, headers=headers)
+
+        if installs_response.status_code == 200:
+            new_install = installs_response.json()
+
+            # Retry up to 3 additional times if ticket_number is None
+            ticket_number = new_install.get("ticket_number")
+            retries = 0
+            while ticket_number is None and retries < 3:
+                print(f"No ticket yet, retrying ({retries + 1}/3)...")
+                time.sleep(3)
+                installs_response = requests.get(installs_url, headers=headers)
+                if installs_response.status_code != 200:
+                    print("MeshDB Error (retrying install):", installs_response.status_code, installs_response.text)
+                    return jsonify({"status": "error", "message": str(installs_response.text)}), installs_response.status_code
+                new_install = installs_response.json()
+                ticket_number = new_install.get("ticket_number")
+                retries += 1
+            if ticket_number is None:
+                print("No ticket after retries!")
+                return jsonify({"status": "no ticket"}), 500
+
+        else:
+            print("MeshDB Error (getting install):", installs_response.status_code, installs_response.text)
+            return jsonify({"status": "error", "message": str(installs_response.text)}), installs_response.status_code
 
         post_install(channel_id=channel_id, install=install, name=name, unit=unit, phone=phone, email=email, location=location, ticket=ticket_number, description=description)
         return jsonify({"status": "success"}), 200
