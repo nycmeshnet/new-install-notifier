@@ -28,6 +28,8 @@ Each entry defines:
 - The **channel ID** (from Slack)
 - A **description** (for reference)
 
+_Note: Make sure that the [@New Network Notifier](https://nycmesh.slack.com/marketplace/A09FLH1DAMP-new-install-notifier) Slack app is a member of any channels that are configured to have notifications posted in them._
+
 Example `channels.json`:
 
 ```json
