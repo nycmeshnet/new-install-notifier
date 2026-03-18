@@ -34,4 +34,9 @@
                         "channel_id": "C02LZR9KKUP",
 			"description": "GSG Fiber (165 Broome)"
                 }
+	    "941":
+                {
+                        "channel_id": "C0AHM31S2UW",
+			"description": "A new install request has been submitted for this building @Lydon Thorpe @Ryan Price"
+                }
 }
