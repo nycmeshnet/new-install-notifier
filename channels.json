@@ -34,4 +34,19 @@
                         "channel_id": "C02LZR9KKUP",
 			"description": "GSG Fiber (165 Broome)"
                 }
+	"162":
+		{
+			"channel_id": "C06E7DBEPF0",
+			"description": "South Slope"
+		},
+	"2701":
+		{
+			"channel_id": "C06E7DBEPF0",
+			"description": "Sunset Park Hub"
+		},
+	"552":
+		{
+			"channel_id": "C075SNH3ALU",
+			"description": "ParkSide Association"
+		},
 }
